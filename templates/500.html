@@ -1,0 +1,20 @@
+{% extends "bootstrap_base.html" %}
+
+{% block title %}Internal Server Error{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Server Error</h1>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="alert alert-danger">
+            <h3>500 - Internal Server Error</h3>
+            <p>Something went wrong on our end. We're working to fix it!</p>
+            <p>
+                <a class="btn btn-default" href="/">Go back to Home</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

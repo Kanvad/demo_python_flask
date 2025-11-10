@@ -1,0 +1,27 @@
+{% extends "bootstrap_base.html" %}
+
+{% block title %}DateTime Demo{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>DateTime Demo</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Server Time</h3>
+        <p>Current time: {{ moment(current_time).format('LLLL') }}</p>
+        <p>From now: {{ moment(current_time).fromNow() }}</p>
+    </div>
+    
+    <div class="col-md-6">
+        <h3>User Local Time</h3>
+        <p>Your local time: {{ moment(current_time).format('LLLL') }}</p>
+        <p>Calendar: {{ moment(current_time).calendar() }}</p>
+    </div>
+</div>
+
+<div class="alert alert-info">
+    <strong>Note:</strong> Moment.js automatically converts server time to user's local timezone.
+</div>
+{% endblock %}

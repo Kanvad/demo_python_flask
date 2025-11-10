@@ -1,0 +1,39 @@
+{% extends "bootstrap_base.html" %}
+
+{% block title %}User - {{ name }}{% endblock %}
+
+{% block page_content %}
+<div class="custom-header">
+    <div class="container">
+        <h1 class="user-name">{{ name }}</h1>
+        <p class="lead">Welcome to your profile page</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="user-card">
+            <h3>User Information</h3>
+            <p>This is a beautifully styled profile page using:</p>
+            <ul>
+                <li>Flask framework</li>
+                <li>Jinja2 templates</li>
+                <li>Bootstrap CSS</li>
+                <li>Custom CSS and JavaScript</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="user-card">
+            <h4>Quick Actions</h4>
+            <p>
+                <button class="btn btn-custom btn-block">Edit Profile</button>
+            </p>
+            <p>
+                <button class="btn btn-custom btn-block">Settings</button>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
