@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 # Configuration
-DOWNLOAD_FOLDER = Path.home() / "Downloads" / "youtube_downloads"
-DOWNLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
+DOWNLOAD_FOLDER = Path.home() / "Downloads"
+DOWNLOAD_FOLDER.mkdir(exist_ok=True)
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024 * 1024  # 5GB max
 
