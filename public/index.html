@@ -877,7 +877,7 @@
             loading.style.display = 'block';
 
             try {
-                const response = await fetch('/get-formats', {
+                const response = await fetch('/api/get_formats', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -928,7 +928,7 @@
             startProgress();
 
             try {
-                const response = await fetch('/download-thumbnail', {
+                const response = await fetch('/api/download_thumbnail', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -939,17 +939,21 @@
                     }),
                 });
 
-                const data = await response.json();
-
-                if (data.success) {
+                if (response.ok) {
                     completeProgress();
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'thumbnail.jpg';
+                    a.click();
+                    URL.revokeObjectURL(url);
                     showMessage(translations[currentLang].downloadSuccess, 'success');
-                    // Trigger download
-                    window.location.href = `/download-file/${data.filename}`;
                 } else {
                     clearInterval(progressInterval);
                     progressContainer.style.display = 'none';
-                    showMessage(`Lỗi: ${data.error}`, 'error');
+                    const error = await response.json();
+                    showMessage(`Lỗi: ${error.error}`, 'error');
                 }
             } catch (error) {
                 clearInterval(progressInterval);
@@ -974,7 +978,7 @@
             startProgress();
 
             try {
-                const response = await fetch('/download', {
+                const response = await fetch('/api/download', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -985,17 +989,21 @@
                     }),
                 });
 
-                const data = await response.json();
-
-                if (data.success) {
+                if (response.ok) {
                     completeProgress();
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'download';
+                    a.click();
+                    URL.revokeObjectURL(url);
                     showMessage(translations[currentLang].downloadSuccess, 'success');
-                    // Trigger download
-                    window.location.href = `/download-file/${data.filename}`;
                 } else {
                     clearInterval(progressInterval);
                     progressContainer.style.display = 'none';
-                    showMessage(`${translations[currentLang].downloadFailed}${data.error}`, 'error');
+                    const error = await response.json();
+                    showMessage(`${translations[currentLang].downloadFailed}${error.error}`, 'error');
                 }
             } catch (error) {
                 clearInterval(progressInterval);
