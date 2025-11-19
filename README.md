@@ -31,7 +31,7 @@ A modern Flask web application for downloading YouTube videos and audio with qua
 - 📊 Display video information (title, duration, thumbnail)
 - 🚀 Simple and intuitive web interface
 - 🌙 Dark mode support
-- 🌐 Multi-language support (English/Vietnamese)
+<!-- - 🌐 Multi-language support (English/Vietnamese) -->
 - 📱 Responsive design for mobile devices
 - ⚡ Fast and reliable downloads using yt-dlp
 - 🖼️ Download video thumbnails
