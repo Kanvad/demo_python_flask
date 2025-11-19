@@ -523,6 +523,16 @@
             transition: width 0.3s ease;
         }
 
+        .progress-bar.indeterminate {
+            animation: indeterminate 2s ease-in-out infinite;
+        }
+
+        @keyframes indeterminate {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
         .progress-text {
             position: absolute;
             top: 0;
@@ -790,22 +800,18 @@
 
         function startProgress() {
             progressContainer.style.display = 'block';
-            let progress = 0;
-            progressInterval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress > 90) progress = 90;
-                progressBar.style.width = progress + '%';
-                progressText.textContent = Math.round(progress) + '%';
-            }, 500);
+            progressBar.classList.add('indeterminate');
+            progressText.textContent = 'Downloading...';
         }
 
         function completeProgress() {
-            clearInterval(progressInterval);
+            progressBar.classList.remove('indeterminate');
             progressBar.style.width = '100%';
             progressText.textContent = '100%';
             setTimeout(() => {
                 progressContainer.style.display = 'none';
                 progressBar.style.width = '0%';
+                progressBar.classList.remove('indeterminate');
                 progressText.textContent = '0%';
             }, 1000);
         }
@@ -1008,6 +1014,7 @@
 
         // Initialize language and theme
         updateLanguage();
+        document.body.classList.add('dark'); // Default dark theme
         updateThemeIcon();
 
         // Allow Enter key to load video info
