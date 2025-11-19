@@ -174,48 +174,45 @@ python app.py
 # Access at http://localhost:5000
 ```
 
-### Vercel Deployment (Serverless)
+### Render Deployment
 
-The project has been converted to Vercel serverless functions. Static UI in `public/`, APIs in `api/`.
+Deploy the full Flask application to Render for better performance and no serverless limitations.
 
-1. **Install Vercel CLI:**
-   ```bash
-   npm install -g vercel
-   # Or use npx: npx vercel
-   ```
+1. **Sign up for Render:**
+   - Go to [render.com](https://render.com) and create an account
 
-2. **Login to Vercel:**
-   ```bash
-   vercel login
-   ```
+2. **Create a new Web Service:**
+   - Click "New" > "Web Service"
+   - Connect your GitHub repository: `https://github.com/Kanvad/flask_youtube_downloader`
+   - Allow access to the repo
 
-3. **Deploy from project root:**
-   ```bash
-   vercel
-   ```
+3. **Configure the service:**
+   - **Name:** flask-youtube-downloader (or your choice)
+   - **Environment:** Python 3
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `python app.py`
+   - **Plan:** Free tier or paid (free has 750 hours/month)
 
-4. **Follow prompts:**
-   - Link to existing project or create new
-   - Set project name
-   - Confirm settings (Python runtime for API)
+4. **Environment Variables (optional):**
+   - `FLASK_ENV`: `production`
+   - `DOWNLOAD_FOLDER`: `./downloads` (default)
 
-5. **For production deployment:**
-   ```bash
-   vercel --prod
-   ```
+5. **Deploy:**
+   - Click "Create Web Service"
+   - Render will build and deploy automatically
+   - Get the deployment URL (e.g., `your-app.onrender.com`)
 
-**Configuration Files:**
-- `vercel.json`: Routes API calls to `/api/*` and serves static from `/public/*`
-- `api/requirements.txt`: Dependencies for serverless functions
-- `public/index.html`: Updated frontend with API endpoints
+**Features on Render:**
+- Full Flask app with persistent storage
+- No execution time limits for downloads
+- Automatic SSL certificate
+- Custom domain support
+- Database integration if needed
 
-**Limitations:**
-- Execution time limit: 10 seconds (may fail for large videos)
-- Memory limit: 1024 MB
-- No persistent storage; downloads stream directly to user
-- FFmpeg may need custom build for audio conversion
-
-**For large downloads or full Flask features:** Use Railway, Render, or Heroku instead.
+**Troubleshooting:**
+- If build fails: Check build logs for missing dependencies
+- For large files: Ensure sufficient memory (upgrade plan if needed)
+- Downloads are saved temporarily and served directly
 
 ### Other Production Deployments
 
