@@ -33,7 +33,7 @@ A modern Flask web application for downloading YouTube videos and audio with qua
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/flask_youtube_downloader.git
+    git clone https://github.com/Kanvad/flask_youtube_downloader.git
     cd flask_youtube_downloader
     ```
 
@@ -166,93 +166,14 @@ flask_youtube_downloader/
 - **Audio**: MP3 (192kbps) - extracts from best available audio stream
 - **Thumbnail**: JPG - high quality thumbnail download
 
-## Deployment
+## Local Development
 
-### Local Development
 ```bash
 python app.py
 # Access at http://localhost:5000
 ```
 
-### Render Deployment
 
-Deploy the full Flask application to Render for better performance and no serverless limitations.
-
-1. **Sign up for Render:**
-   - Go to [render.com](https://render.com) and create an account
-
-2. **Create a new Web Service:**
-   - Click "New" > "Web Service"
-   - Connect your GitHub repository: `https://github.com/Kanvad/flask_youtube_downloader`
-   - Allow access to the repo
-
-3. **Configure the service:**
-   - **Name:** flask-youtube-downloader (or your choice)
-   - **Environment:** Python 3
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `python app.py`
-   - **Plan:** Free tier or paid (free has 750 hours/month)
-
-4. **Environment Variables (optional):**
-   - `FLASK_ENV`: `production`
-   - `DOWNLOAD_FOLDER`: `./downloads` (default)
-
-5. **Deploy:**
-   - Click "Create Web Service"
-   - Render will build and deploy automatically
-   - Get the deployment URL (e.g., `your-app.onrender.com`)
-
-**Features on Render:**
-- Full Flask app with persistent storage
-- No execution time limits for downloads
-- Automatic SSL certificate
-- Custom domain support
-- Database integration if needed
-
-**Troubleshooting:**
-- If build fails: Check build logs for missing dependencies
-- For large files: Ensure sufficient memory (upgrade plan if needed)
-- Downloads are saved temporarily and served directly
-
-### Other Production Deployments
-
-#### Using Gunicorn
-```bash
-pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:8000 app:app
-```
-
-#### Railway
-1. Connect GitHub repo to Railway
-2. Set build command: `pip install -r requirements.txt`
-3. Set start command: `python app.py`
-4. Deploy
-
-#### Render
-1. Create Web Service from GitHub
-2. Set build command: `pip install -r requirements.txt`
-3. Set start command: `python app.py`
-4. Deploy
-
-#### Using Docker
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 5000
-CMD ["python", "app.py"]
-```
-
-#### Environment Variables
-- `FLASK_ENV`: Set to `production` for production mode
-- `DOWNLOAD_FOLDER`: Custom download directory (default: `./downloads`)
-
-### Security Considerations
-- Files are served from a dedicated downloads folder
-- No authentication implemented (add if needed for production)
-- Rate limiting recommended for public deployments
 
 ## Troubleshooting
 
