@@ -53,7 +53,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             position: relative;
             overflow-x: hidden;
         }
@@ -91,11 +91,11 @@
 
         .container {
             background: var(--card-bg);
-            border-radius: 24px;
-            padding: 35px;
-            max-width: 700px;
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 600px;
             width: 100%;
-            box-shadow: 0 30px 80px var(--card-shadow);
+            box-shadow: 0 20px 60px var(--card-shadow);
             backdrop-filter: blur(10px);
             animation: slideIn 0.6s ease-out;
             role: main;
@@ -114,14 +114,14 @@
 
         .header {
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             position: relative;
         }
 
         .logo {
             display: inline-block;
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 40px;
+            margin-bottom: 12px;
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -132,14 +132,14 @@
 
         h1 {
             color: var(--text);
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
         }
 
@@ -181,7 +181,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
@@ -197,10 +197,10 @@
         input[type="text"],
         select {
             width: 100%;
-            padding: 15px 18px;
+            padding: 12px 15px;
             border: 2px solid var(--input-border);
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14px;
             transition: all 0.3s ease;
             font-family: inherit;
             background: var(--input-bg);
@@ -222,10 +222,10 @@
 
         .radio-group {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             background: var(--input-bg);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
         }
 
         .radio-option {
@@ -259,12 +259,12 @@
 
         button {
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             background: var(--button-bg);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -299,10 +299,10 @@
         .video-info {
             display: none;
             background: var(--input-bg);
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border-left: 5px solid #667eea;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
             animation: slideIn 0.4s ease-out;
         }
 
@@ -316,12 +316,12 @@
         }
 
         .video-thumbnail {
-            width: 120px;
-            height: 120px;
-            border-radius: 12px;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .video-details {
@@ -433,7 +433,7 @@
         .loading {
             display: none;
             text-align: center;
-            margin: 30px 0;
+            margin: 20px 0;
             animation: slideIn 0.3s ease-out;
         }
 
@@ -459,15 +459,15 @@
         }
 
         .message {
-            padding: 15px 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             display: none;
             word-break: break-word;
             animation: slideIn 0.3s ease-out;
-            border-left: 5px solid;
+            border-left: 4px solid;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .message.show {
@@ -705,7 +705,7 @@
                             <i class="fas fa-clock"></i>
                             <span id="duration"></span>
             </div>
-            <div id="progressContainer" class="progress-container">
+            <div id="progressContainer" class="progress-container" style="margin-top: 15px;">
                 <div id="progressBar" class="progress-bar"></div>
                 <div class="progress-text" id="progressText">0%</div>
             </div>
