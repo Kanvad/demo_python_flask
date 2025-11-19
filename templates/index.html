@@ -92,7 +92,7 @@
         .container {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 25px;
+            padding: 15px;
             max-width: 600px;
             width: 100%;
             box-shadow: 0 20px 60px var(--card-shadow);
@@ -255,6 +255,34 @@
             display: flex;
             gap: 12px;
             margin-bottom: 15px;
+        }
+
+        .type-button {
+            flex: 1;
+            padding: 14px;
+            background: var(--input-bg);
+            color: var(--text);
+            border: 2px solid var(--input-border);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .type-button:hover {
+            background: var(--card-bg);
+            border-color: #667eea;
+        }
+
+        .type-button.active {
+            background: var(--button-bg);
+            color: white;
+            border-color: var(--button-bg);
         }
 
         button {
@@ -638,7 +666,7 @@
             </div>
             <h1 id="titleText">YouTube Downloader</h1>
             <p class="subtitle" id="subtitleText">Tải Video & Nhạc từ YouTube một cách dễ dàng</p>
-            <button id="langToggle" class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">EN</button>
+            <!-- <button id="langToggle" class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">EN</button> -->
             <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">🌙</button>
         </div>
 
@@ -661,30 +689,13 @@
             <label id="typeLabel">
                 <i class="fas fa-cogs"></i> Loại Tải
             </label>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input
-                        type="radio"
-                        id="video-option"
-                        name="content_type"
-                        value="video"
-                        checked
-                    />
-                    <label for="video-option" id="videoLabel">
-                        <i class="fas fa-video"></i> Video
-                    </label>
-                </div>
-                <div class="radio-option">
-                    <input
-                        type="radio"
-                        id="audio-option"
-                        name="content_type"
-                        value="audio"
-                    />
-                    <label for="audio-option" id="audioLabel">
-                        <i class="fas fa-music"></i> MP3 (Nhạc)
-                    </label>
-                </div>
+            <div class="buttons-group">
+                <button id="videoBtn" class="type-button active" onclick="selectType('video')">
+                    <span id="videoLabel">Video</span>
+                </button>
+                <button id="audioBtn" class="type-button" onclick="selectType('audio')">
+                    <span id="audioLabel">MP3 (Nhạc)</span>
+                </button>
             </div>
         </div>
 
@@ -736,6 +747,7 @@
         const videoInfo = document.getElementById('videoInfo');
         let currentTitle = '';
         let currentLang = 'vi';
+        let currentType = 'video';
         const themeToggle = document.getElementById('themeToggle');
         const progressContainer = document.getElementById('progressContainer');
         const progressBar = document.getElementById('progressBar');
@@ -796,6 +808,15 @@
 
         function updateThemeIcon() {
             themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        }
+
+        function selectType(type) {
+            currentType = type;
+            document.getElementById('videoBtn').classList.toggle('active', type === 'video');
+            document.getElementById('audioBtn').classList.toggle('active', type === 'audio');
+            if (urlInput.value.trim()) {
+                getVideoInfo();
+            }
         }
 
         function startProgress() {
@@ -873,7 +894,7 @@
 
         async function getVideoInfo() {
             const url = urlInput.value.trim();
-            const contentType = document.querySelector('input[name="content_type"]:checked').value;
+            const contentType = currentType;
 
             if (!url) {
                 showMessage(translations[currentLang].enterUrlError, 'error');
@@ -968,7 +989,7 @@
 
         async function downloadVideo() {
             const url = urlInput.value.trim();
-            const contentType = document.querySelector('input[name="content_type"]:checked').value;
+            const contentType = currentType;
 
             if (!url) {
                 showMessage(translations[currentLang].enterUrlError, 'error');
@@ -1016,6 +1037,7 @@
         updateLanguage();
         document.body.classList.add('dark'); // Default dark theme
         updateThemeIcon();
+        selectType('video'); // Initialize active button
 
         // Allow Enter key to load video info
         urlInput.addEventListener('keypress', (e) => {

@@ -6,10 +6,25 @@
 
 A modern Flask web application for downloading YouTube videos and audio with quality selection. Features a beautiful, responsive UI with dark mode and multi-language support.
 
-![App Screenshot](https://via.placeholder.com/800x400?text=YouTube+Downloader+Screenshot)
+![Preview](./preview/preview.png)
 
-## Features
+## Table of Contents
 
+- Overview
+- Highlights
+- Quick Start
+- Installation
+- Usage
+
+- File Structure
+- License
+- Credits
+- Disclaimer
+
+## Overview
+A modern Flask web application for downloading YouTube videos and audio with quality selection. It offers a beautiful, responsive UI with dark mode and multi-language support.
+
+## Highlights
 - 🎬 Download videos from YouTube in various qualities
 - 🎵 Extract audio as MP3
 - 🎯 Automatic quality selection for best experience
@@ -21,6 +36,14 @@ A modern Flask web application for downloading YouTube videos and audio with qua
 - ⚡ Fast and reliable downloads using yt-dlp
 - 🖼️ Download video thumbnails
 - 📈 Download progress indicators
+
+## Quick Start
+
+1. Prereqs: Python 3.7+, FFmpeg
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the app: `python app.py`
+4. Open in browser: `http://localhost:5000`
+
 
 ## Installation
 
@@ -76,69 +99,6 @@ A modern Flask web application for downloading YouTube videos and audio with qua
 - **Progress Bar:** Visual download progress indicator
 - **Responsive Design:** Works on desktop and mobile devices
 
-## API Documentation
-
-The application provides REST API endpoints for programmatic access:
-
-### GET `/`
-Returns the main web interface.
-
-### POST `/get-formats`
-Get video/audio information and available formats.
-
-**Request Body:**
-```json
-{
-  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "content_type": "video" | "audio"
-}
-```
-
-**Response:**
-```json
-{
-  "title": "Video Title",
-  "duration": 3600,
-  "thumbnail": "https://...",
-  "formats": {...},
-  "content_type": "video"
-}
-```
-
-### POST `/download`
-Download video or audio.
-
-**Request Body:**
-```json
-{
-  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "content_type": "video" | "audio"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Download completed",
-  "filename": "video.mp4"
-}
-```
-
-### POST `/download-thumbnail`
-Download video thumbnail.
-
-**Request Body:**
-```json
-{
-  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "title": "Video Title"
-}
-```
-
-### GET `/download-file/<filename>`
-Download the saved file.
-
 ## File Structure
 
 ```
@@ -149,8 +109,7 @@ flask_youtube_downloader/
 │   └── index.html           # Web interface with modern UI
 ├── downloads/               # Downloaded files (created automatically)
 ├── .gitignore              # Git ignore rules
-├── README.md               # This documentation
-└── flask_youtube_downloader.iml  # PyCharm project file
+└── README.md               # This documentation
 ```
 
 ## How It Works
@@ -187,49 +146,10 @@ python app.py
 - Network issues or YouTube restrictions
 - Check internet connection and try again
 
-**"FFmpeg not found"**
-- Install FFmpeg as described in prerequisites
-- Ensure it's in your system PATH
-
-**"File not found after download"**
-- Check `downloads/` folder permissions
-- Ensure sufficient disk space
-
 ### Performance Tips
 - Downloads are faster with better internet connection
 - Audio extraction is quicker than video downloads
 - Clear downloads folder periodically to free space
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes and test thoroughly
-4. Commit with clear messages: `git commit -m "Add feature"`
-5. Push to your branch: `git push origin feature-name`
-6. Create a Pull Request
-
-### Development Guidelines
-- Follow PEP 8 style guidelines
-- Add tests for new features
-- Update documentation for API changes
-- Ensure responsive design works on mobile
-
-## Changelog
-
-### v1.1.0 (Current)
-- Added dark mode toggle
-- Multi-language support (English/Vietnamese)
-- Download progress indicators
-- Improved accessibility with ARIA labels
-- Enhanced UI with modern design
-- Added thumbnail download feature
-
-### v1.0.0
-- Initial release
-- Basic YouTube video/audio download
-- Flask web interface
-- Responsive design
 
 ## License
 
